@@ -1,0 +1,25 @@
+server:
+  port: 7080
+swagger:
+  basePackage: com.shark.example
+spring:
+  application:
+    name: Example
+  kafka:
+    client-id: shark
+    bootstrap-servers: kafka.dev.sis.ai:9092
+    template:
+      default-topic: input-topic
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: sygps
+      auto-offset-reset: earliest
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      enable-auto-commit: false
+kafka:
+  topic:
+    input: input-topic
+    streams: streams-topic
